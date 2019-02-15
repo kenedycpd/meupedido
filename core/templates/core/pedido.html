@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% load widget_tweaks %}
+
+    
+{% block body %}
+<style type="text/css">
+.alert {
+padding: 0 15px;
+margin-bottom: 1rem;
+border: 1px solid transparent;
+border-radius: .25rempx
+}
+.alert p{
+padding: 7px 0 7px;
+}
+.alert.success{
+color: #3c763d;
+background-color: #dff0d8;
+border-color: #d0e9c6;}
+</style>
+    
+    <br>
+	<br>
+	<h1>Realizar Pedido de Venda</h1>
+    
+    <div class="desktop-6">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert success">
+    <p>{{ message }}</p>  
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <form method="post">
+    	{% csrf_token %}
+
+        <div class="row">
+        <div class="col-md-6">
+        <div class="form-group" required>
+        <label for="{{ form.cliente.id_for_label }}">Selecione Cliente:</label>
+        {{ form.cliente|add_class:"form-control" }}
+        </div>
+
+        <div class="form-group" required>
+        <label for="{{ form.produto.id_for_label }}">Selecione Produto:</label>
+        {{ form.produto|add_class:"form-control" }}
+        </div>
+        </div>
+      
+
+        <div class="col-md-6">
+        <div class="form-group" required>
+        <label for="{{ form.quantidade.id_for_label }}">Digite Quantidade:</label>
+        {{ form.quantidade|add_class:"form-control" }}
+        </div>
+
+        <div class="form-group" required>
+    	<label for="{{ form.preco.id_for_label }}">Digite Preço:</label>
+    	{{ form.preco|add_class:"form-control" }}
+    	</div>
+        </div>
+    
+        
+         
+    	<div class="form-group" required>
+        <button class="btn btn-success" type="submit">Adicionar Produtos</button>
+		<a href="{% url 'lista' %}" class="btn btn-info" type="submit">Finalizar Pedido</a>
+	    </div>
+
+    </form>
+	{% endblock body %}
+

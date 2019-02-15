@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+{% load widget_tweaks %}
+
+<div class="container">
+{% block body %}
+
+<style type="text/css">
+.alert {
+padding: 0 15px;
+margin-bottom: 1rem;
+border: 1px solid transparent;
+border-radius: .25rempx
+}
+.alert p{
+padding: 7px 0 7px;
+}
+.alert.success{
+color: #3c763d;
+background-color: #dff0d8;
+border-color: #d0e9c6;}
+</style>
+
+      <br>
+      <br>
+      <b>Cliente: {%for vendas in venda%}{{vendas.cliente}}{%endfor%}</b>
+      <br>
+      <b>Pedido de Venda</b>
+
+      <div class="data" style="float:right"><b>Data: </b>{{data}}</div> 
+      <table class="table table-hover">
+      <thead>
+      <tr class="table-active">
+      <th>Descrição do Produto</th>
+      <th>Preço</th>
+      <th>Qde</th>
+      <th>Total</th>
+      <th colspan="2" style="text-align:center">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      {% for vendas in venda %}
+
+      <tr class="table-success" style="color:#000;">
+      <td>{{ vendas.produto }}</td>
+      <td>{{ vendas.preco }}</td>
+      <td>{{ vendas.quantidade }}</td>
+      <td>{{ vendas.media }}</td>
+      <td><a href="{% url 'edite_pedido' vendas.id%}" class="btn btn-info btn-xs">Editar</a></td>
+      <td><a href="{% url 'delete_pedido' vendas.id%}" class="btn btn-danger btn-xs">Excluir</a></td>
+      </tr>
+     
+      {% empty %}
+      <div class="alert success">
+      <p>Sem itens na lista.</p>
+      </div>
+      {% endfor %}
+        
+    </tbody>
+    </table>
+  
+  
+{% endblock body %}
+</div>

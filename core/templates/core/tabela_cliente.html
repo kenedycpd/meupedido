@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% load widget_tweaks %}
+{% block body %}
+
+	<br>
+	<br>
+	<table class="table table-hover">
+	<thead>
+	<tr class="table-success" style="color:#000;">
+	<th>CLIENTES CADASTRADOS NO SISTEMA</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for l in cliente %}
+	<tr class="table-secondary" style="color:#000;">
+	<td>{{ l.nome }}</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+	</table>
+		
+{% endblock body %}
