@@ -9,9 +9,16 @@ class Pedido(models.Model):
 	preco = models.DecimalField('Preço', max_digits=12, decimal_places=2, blank=False)
 	quantidade = models.IntegerField('Quantidade', default=1, blank=False)
 
-	def total(self):
-		return self.preco * self.quantidade
-	media = property(total)
+	def otima(self):
+		if self.preco > 100:
+			return 'otima'
+		if self.preco >=90:
+			return 'boa'
+		if self.preco <=89.99:
+			return 'ruim'
+	o = property(otima)
+
+	
 	
 	def __str__(self):
 		return "%s" % self.criado
