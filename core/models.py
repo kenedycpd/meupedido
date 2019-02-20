@@ -9,16 +9,25 @@ class Pedido(models.Model):
 	preco = models.DecimalField('Preço', max_digits=12, decimal_places=2, blank=False)
 	quantidade = models.IntegerField('Quantidade', default=1, blank=False)
 
-	def otima(self):
+	def rentabilidade(self):
 		if self.preco > 100:
 			return 'otima'
 		if self.preco >=90:
 			return 'boa'
 		if self.preco <=89.99:
 			return 'ruim'
-	o = property(otima)
+	resultado = property(rentabilidade)
 
-	
+	def multiplo(self):
+		if self.quantidade % 2 == 0:
+			return 'Liberado para Multiplo de 2'
+		else:
+			if self.quantidade % 5 == 0:
+				return 'Liberado para Multiplo de 5'
+			else:
+				return 'livre de multiplo'
+	multiplos = property(multiplo)
+
 	
 	def __str__(self):
 		return "%s" % self.criado
