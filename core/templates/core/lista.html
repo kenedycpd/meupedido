@@ -32,7 +32,9 @@ border-color: #d0e9c6;}
       <th>Descrição do Produto</th>
       <th>Preço</th>
       <th>Qde</th>
+      <th>Multiplo de Venda</th>
       <th>Rentabilidade</th>
+      
      
      
       <th colspan="2" style="text-align:center">Ações</th>
@@ -46,7 +48,9 @@ border-color: #d0e9c6;}
       <td>{{ vendas.produto }}</td>
       <td>{{ vendas.preco }}</td>
       <td>{{ vendas.quantidade }}</td>
-      <td>{{ vendas.o }}</td>
+       <td>{{ vendas.multiplo }}</td>
+      <td>{{ vendas.resultado }}</td>
+     
       <td><a href="{% url 'edite_pedido' vendas.id%}" class="btn btn-info btn-xs">Editar</a></td>
       <td><a href="{% url 'delete_pedido' vendas.id%}" class="btn btn-danger btn-xs">Excluir</a></td>
       </tr>
